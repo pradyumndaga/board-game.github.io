@@ -1,0 +1,19 @@
+ <div *ngIf="!length" class="user-input">
+     <h3>Please enter the dimension of the board and click enter</h3>
+     <input #box (keyup.enter)="onSubmit(box.value)">
+     <span *ngIf="isInputError" class="error"> Please enter value greater than 1</span>
+ </div>
+ <div *ngIf="length">
+ <div *ngFor="let row of Board.row; let y=index">
+      <div class ="board-square" *ngFor="let col of Board.col; let x=index" [style.background-color]="Board.Squares[x][length-1-y].IsGreen ? green : black">
+            <!-- <span #notplayer>{{Board.Squares[x][length-1-y].SquareRowId}}{{ Board.Squares[x][length-1-y].SquareColId}}</span> -->
+          <div *ngIf="Board.Squares[x][length-1-y].isPlayer">
+            <img class="imgsize" [src]="img"> 
+          </div>
+          
+        
+      </div>
+  </div>
+  <br><br>
+  <span>Steps: {{Board.player.steps}}</span>
+  </div>

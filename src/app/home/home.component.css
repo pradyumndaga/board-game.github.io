@@ -1,0 +1,22 @@
+/* styles.css */
+* {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.board-square {
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    border-color: black;
+    border: solid;
+}
+
+.imgsize {
+    width: 50%;
+    height: 10%;
+    margin-top: 1.35rem;
+}
+
+.user-input {
+    display: inline-block;
+}
