@@ -266,9 +266,6 @@ Apache-2.0
  
 
 
-src
-ISC
-
 sweetalert2
 MIT
 The MIT License (MIT)
