@@ -1,19 +1,33 @@
+ <h2>Step Count Board Game</h2>
+ <p>Move the character to cover all the green blocks in the board to find out the steps required to do so.</p>
  <div *ngIf="!length" class="user-input">
-     <h3>Please enter the dimension of the board and click enter</h3>
+     <h3>Please enter the dimension of the board (from 2 to 10 blocks) and click enter</h3>
      <input #box (keyup.enter)="onSubmit(box.value)">
-     <span *ngIf="isInputError" class="error"> Please enter value greater than 1</span>
+     <span *ngIf="isInputError" class="error"> Please enter value between 2 to 10</span>
  </div>
  <div *ngIf="length">
+<span>Steps: {{Board.player.steps}}</span>
+<br><br>
+<div class="swipe-board" (swipe)="onSwipe($event)">
  <div *ngFor="let row of Board.row; let y=index">
       <div class ="board-square" *ngFor="let col of Board.col; let x=index" [style.background-color]="Board.Squares[x][length-1-y].IsGreen ? green : black">
             <!-- <span #notplayer>{{Board.Squares[x][length-1-y].SquareRowId}}{{ Board.Squares[x][length-1-y].SquareColId}}</span> -->
           <div *ngIf="Board.Squares[x][length-1-y].isPlayer">
-            <img class="imgsize" [src]="img"> 
+            <img class="imgsize" [src]="img" alt="Player"> 
           </div>
           
         
       </div>
   </div>
-  <br><br>
-  <span>Steps: {{Board.player.steps}}</span>
+  <br>
+  <button *ngIf="gameOver" (click)="playAgain()">Play again</button>
+  <br>
+  <div>
+  <h5>Instructions:</h5>
+  <p><b>How to play:</b></p>
+  <p>For mobile or touch devices, swipe left, right, up or down to move the character</p>
+  <p>For Desktop/Laptop, use arrow keys to move the character</p>
+  </div>
+</div>
+  
   </div>
